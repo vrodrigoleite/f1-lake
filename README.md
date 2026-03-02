@@ -6,6 +6,8 @@ Todo projeto será realizado ao vivo na [Twitch (Téo Me Why)](twitch.tv/teomewh
 
 A gravação ficará disponível no [YouTube](https://youtube.com/@teomewhy) para apoiadores do canal.
 
+- [Apresentação](https://docs.google.com/presentation/d/1chfHJ1DuPVUJxgDi8LkAltcd4Ca6VHgkiK2cUFgnTyo/edit?usp=sharing)
+
 ## Etapas do projeto
 - [Coleta](#coleta)
 - [Envio dos Dados](#envio-dos-dados)
