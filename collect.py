@@ -69,19 +69,21 @@ class CollectResults:
 
 # %%
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--start", type=int, default=0)
-parser.add_argument("--stop", type=int, default=0)
-parser.add_argument("--years", "-y", nargs="+", type=int)
-parser.add_argument("--modes", "-m", nargs="+")
-args = parser.parse_args()
+if __name__ == "__main__":
 
-if args.years:
-    collect = CollectResults(args.years, args.modes)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--start", type=int, default=0)
+    parser.add_argument("--stop", type=int, default=0)
+    parser.add_argument("--years", "-y", nargs="+", type=int)
+    parser.add_argument("--modes", "-m", nargs="+")
+    args = parser.parse_args()
 
-elif args.start and args.stop:
-    years = [i for i in range(args.start, args.stop+1)]
-    collect = CollectResults(years, args.modes)
+    if args.years:
+        collect = CollectResults(args.years, args.modes)
+
+    elif args.start and args.stop:
+        years = [i for i in range(args.start, args.stop+1)]
+        collect = CollectResults(years, args.modes)
 
 
-collect.process_years()
+    collect.process_years()
