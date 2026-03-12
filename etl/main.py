@@ -4,11 +4,14 @@ import os
 import dotenv
 import nekt
 
+dotenv.load_dotenv()
+
 from tqdm import tqdm
 
 # %%
 
-nekt.data_access_token = "dFedEDmDFEdHpkt5pMDHdkLXQd2jW6tFW52A1z9m6bK9hpw5P54pCSuDOzAwGc55vDr1fNAMCBjWHpVSnZYpWpcddaqAclVaNsCTMOeJYqxEcdiJQ2pO7JRX2FaFX2YnYUocO5Ay21Ne2YcISyxSqM7VLLPhorLJglnx7eaisf3T06s4qgW11kQr0z6jmLy3knnqh4w8jCNBFsbE65J1AT3NFJrrNV2CjhxUrCJQLwdY8OObM16K1Ct4zYTmUHND"
+nekt.data_access_token = os.getenv("NEKT_TOKEN")
+
 
 # %%
 
