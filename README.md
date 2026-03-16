@@ -52,3 +52,14 @@ Os modelos serão treinados e comparados localmente, fazendo uso do MLFlow hospe
 ### Aplicação para usuário
 
 Com nosso modelo treinado, podemos criar uma aplicação onde entusiastas de Fórmula 1 poderão acompanhar as predições do modelo.
+
+
+## Como rodar o projeto?
+
+Faça o setup de virtualização do seu ambiente python
+
+conda create --name f1-lake python=3.13
+
+Ative seu ambiente virtual:
+
+conda activate f1-lake
