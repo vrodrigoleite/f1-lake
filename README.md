@@ -2,9 +2,6 @@
 
 Vamos coletar, armazenar, processar dados de Fórmula 1 para construção de análises e modelos preditivos.
 
-Todo projeto será realizado ao vivo na [Twitch (Téo Me Why)](twitch.tv/teomewhy) de maneira aberta para toda a comunidade com início no dia 02/03 às 9AM.
-
-A gravação ficará disponível no [YouTube](https://youtube.com/@teomewhy) para apoiadores do canal.
 
 - [Apresentação](https://docs.google.com/presentation/d/1chfHJ1DuPVUJxgDi8LkAltcd4Ca6VHgkiK2cUFgnTyo/edit?usp=sharing)
 
