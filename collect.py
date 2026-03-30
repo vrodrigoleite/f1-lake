@@ -1,11 +1,13 @@
 # %%
 import fastf1
 import pandas as pd
+import time
+import argparse
 pd.set_option('display.max_columns', None)
 # %%
 
 class Collect:
-    def __init__(self, year = [2021, 20222], modes = ['R', 'Q', 'S']):
+    def __init__(self, year = [2021, 2022], modes = ['R', 'Q', 'S']):
 
         self.year = year
         self.modes = modes
@@ -14,7 +16,9 @@ class Collect:
         try:
             session = fastf1.get_session(year, gp, mode)
             session._load_drivers_results()
-            return session.results
+            df = session.results
+            df['Mode'] = mode
+            return df
         except Exception as e:
             print(f"Erro ao coletar dados do GP {gp}: {e}")
             # Retorna um DataFrame vazio em caso de erro
@@ -34,30 +38,30 @@ class Collect:
             return True
         else:
             return False
+        
+    def process_year_modes(self, year):
+        for i in range(1, 50):
+            for mode in self.modes:
+                if not self.process(year, i, mode) and mode == 'R':
+                    return
+                
+    def process_years(self):
+        for year in self.year:
+            print(f"Processando dados do ano {year}...")
+            self.process_year_modes(year)
+            time.sleep(5)
+
+
+
 
 # %%
+if __name__ == '__main__':
 
-collect = Collect([2021, 2022], ['R'])
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--years', '-y', nargs='+', type=int, default=[2021, 2022])
+    parser.add_argument('--modes', '-m', nargs='+', type=str, default=['R'])
 
-# %%
+    args = parser.parse_args()
 
-collect.get_data(2021, 23, 'R')
-collect
-
-# %%
-for i in range(1,50):
-
-    try:
-        print("Coletando dados do GP: ", i)
-        # Define a sessão  de busca e carrega os dados
-        session = fastf1.get_session(2021, i, 'R')
-        session._load_drivers_results()
-        # Exibe e salva os dados da sessão em um arquivo Parquet
-        session.results
-        session.results.to_parquet(f'data/2021_{i:02d}_R.parquet')
-
-        print(session.results)
-
-    except Exception as e:
-        print(f"Erro ao coletar dados do GP {i}: {e}")
-        break
+    collect = Collect(args.years, args.modes)
+    collect.process_years()
