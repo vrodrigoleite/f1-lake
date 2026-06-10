@@ -60,3 +60,9 @@ conda create --name f1-lake python=3.13
 Ative seu ambiente virtual:
 
 conda activate f1-lake
+
+## Temporário
+
+Estou revendo a aula 03 do F1 Lakehouse.
+
+Tenha calma. Um dia de cada vez!
