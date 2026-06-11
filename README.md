@@ -65,4 +65,6 @@ conda activate f1-lake
 
 Estou revendo a aula 03 do F1 Lakehouse.
 
+Finalizado a aula 03, retomar a partir da aula 04.
+
 Tenha calma. Um dia de cada vez!
