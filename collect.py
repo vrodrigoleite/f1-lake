@@ -1,9 +1,11 @@
 # %%
+
 import fastf1
 import pandas as pd
 import time
 import argparse
 pd.set_option('display.max_columns', None)
+
 # %%
 
 class Collect:
@@ -55,6 +57,7 @@ class Collect:
 
 
 # %%
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
@@ -65,3 +68,4 @@ if __name__ == '__main__':
 
     collect = Collect(args.years, args.modes)
     collect.process_years()
+    
