@@ -8,6 +8,12 @@ pd.set_option('display.max_columns', None)
 
 # %%
 
+# Testes
+df = pd.read_parquet('data/2019_01_R.parquet')
+df
+
+# %%
+
 class Collect:
     def __init__(self, year = [2021, 2022], modes = ['R', 'Q', 'S']):
 
@@ -15,20 +21,33 @@ class Collect:
         self.modes = modes
 
     def get_data(self, year, gp, mode) -> pd.DataFrame:
+
         try:
             session = fastf1.get_session(year, gp, mode)
-            session._load_drivers_results()
-            df = session.results
-            df['Mode'] = mode
-            return df
+                
         except Exception as e:
             print(f"Erro ao coletar dados do GP {gp}: {e}")
             # Retorna um DataFrame vazio em caso de erro
             return pd.DataFrame() 
         
-    def save_data(self, data: pd.DataFrame, year, gp, mode):
+        session._load_drivers_results()
+        df = session.results
+
+        df['Year'] = session.date.year
+        df['Date'] = session.date
+        df['Mode'] = session.name
+        df['RoundNumber'] = session.event['RoundNumber']
+        df['OfficialEventName'] = session.event['OfficialEventName']
+        df['EventName'] = session.event['EventName']
+        df['Country'] = session.event['Country']
+        df['Location'] = session.event['Location']
+
+        return df
+        
+    def save_data(self, data: pd.DataFrame, year: int, gp: int, mode: str):
         try:
-            data.to_parquet(f'data/{year}_{gp:02d}_{mode}.parquet')
+            filename = f'data/{year}_{gp:02d}_{mode}.parquet'
+            data.to_parquet(filename, index=False)
             print(f"Dados salvos com sucesso para o GP {gp} do ano {year} no modo {mode}.")
         except Exception as e:
             print(f"Erro ao salvar dados do GP {gp}: {e}")
